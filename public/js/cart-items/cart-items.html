@@ -1,0 +1,12 @@
+
+<section class="maincontainer">
+    <h1>Shopping Cart</h1>
+    <section ng-repeat="item in $ctrl.cartItemList" class="itemcontainers">
+        <p>ID: {{ item.id }}</p>
+        <p>Product: {{ item.product }}</p>
+        <p>Price: {{ item.price | currency }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Total: {{ item.price * item.quantity | currency}} </p>
+        <!-- <button ng-click="$ctrl.selectItem(item.id);">SELECT POKEMON</button> -->
+    </section>
+</section> 

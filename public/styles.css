@@ -1,0 +1,31 @@
+body {
+    background-color: #b5e7a0;
+}
+
+p {
+    margin: 0;
+}
+
+h1 {
+    padding-top: 10px;
+}
+
+.maincontainer {
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    background-color: #d5e1df;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 12px 12px 2px 1px #86af49;
+}
+
+.itemcontainers {
+    background-color: #e3eaa7;
+    justify-content: space-around;
+    display: flex;
+    border: 1px black solid;
+    margin: 2% 5%;
+    padding: 1%;
+    border-radius: 5px;
+}
