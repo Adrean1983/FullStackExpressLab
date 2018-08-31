@@ -11,6 +11,36 @@ function CartService($http) {
       return vm.cartItemList;
     });
   };
+  vm.addItem = (item) => {
+      return $http({
+        url: "/cart-items",
+        method: "POST",
+        data: item
+      }).then((response) => {
+        vm.cartItemList = response.data;
+        return vm.cartItemList;
+      })
+  }
+  vm.removeItem = (id) => {
+    return $http({
+      url: "/cart-items/" + id,
+      method:"DELETE",
+    }).then((response) => {
+      vm.cartItemList = response.data;
+      return vm.cartItemList;
+    })
+  }
+
+  vm.updateItem = (quantity, id) => {
+    return $http({
+      url: "/cart-items/" + id,
+      method: "PUT",
+      data: quantity
+    }).then((response) => {
+      vm.cartItemList = response.data;
+      return vm.cartItemList;
+    })
+  }
 //   vm.updateResults = (victory) => {
 //     return $http({
 //       url: "/results",

@@ -5,8 +5,31 @@ const cartItems = {
     const vm = this;
     CartService.getAllItems().then((response) => {
       vm.cartItemList = response;
-      console.log(vm.cartItemList);
     });
+    vm.addItemToList = (item) => {
+      CartService.addItem(item).then((response) => {
+        vm.cartItemList = response;
+        return vm.cartItemList;
+      });
+        console.log(item);
+      
+      // console.log(CartService.addItem());
+    };
+    
+    vm.deleteItemFromList = (id) => {
+      CartService.removeItem(id).then((response) => {
+        vm.cartItemList = response;
+        console.log(id);
+      });
+    }
+
+    vm.editItemFromList = (quantity, id) => {
+      CartService.updateItem(quantity, id).then((response) => {
+        vm.cartItemList = response;
+        return vm.cartItemList;
+      })
+    }
+    // vm.removeItemList = 
     // vm.selectPokemon = (id) => {
     //   PokemonService.getIndividualPokemon(id).then((response) => {
     //     vm.msg = `You have selected ${response.name}`;

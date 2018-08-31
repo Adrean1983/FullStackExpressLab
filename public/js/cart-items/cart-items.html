@@ -1,12 +1,23 @@
 
+
 <section class="maincontainer">
     <h1>Shopping Cart</h1>
+    <h4>Add Item</h4>
+    <form ng-submit="$ctrl.addItemToList($ctrl.item);">
+        <input ng-model="$ctrl.item.product" type="text" name="item" placeholder="Add new item.." required>
+        <input ng-model="$ctrl.item.price" type="number" name="price" placeholder="Price" required>
+        <input ng-model="$ctrl.item.quantity" type="number" name="quantity" placeholder="Quantity" required >
+        <button type="submit">Add Item</button>
+    </form>
+    <h4>Shopping List</h4>
     <section ng-repeat="item in $ctrl.cartItemList" class="itemcontainers">
-        <p>ID: {{ item.id }}</p>
+        <!-- <p>ID: {{ item.id }}</p> -->
         <p>Product: {{ item.product }}</p>
         <p>Price: {{ item.price | currency }}</p>
         <p>Quantity: {{ item.quantity }}</p>
+        <!-- <button type="button" ng-click="$ctrl.editItemFromList($ctrl.cartItemList[$index].id);">Edit</button> -->
         <p>Total: {{ item.price * item.quantity | currency}} </p>
-        <!-- <button ng-click="$ctrl.selectItem(item.id);">SELECT POKEMON</button> -->
+        <button ng-click="$ctrl.deleteItemFromList($ctrl.cartItemList[$index].id);">Delete</button>
+        
     </section>
 </section> 
