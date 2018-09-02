@@ -3,8 +3,8 @@ const cartItems = {
   templateUrl: `./js/cart-items/cart-items.html`,
   controller: ["CartService", function(CartService) {
     const vm = this;
-    CartService.getAllItems().then((response) => {
-      vm.cartItemList = response;
+    CartService.setAllItems().then(() => {
+      vm.cartItemList = CartService.getAllItems()
     });
     vm.addItemToList = (item) => {
       CartService.addItem(item).then((response) => {
@@ -23,8 +23,8 @@ const cartItems = {
       });
     }
 
-    vm.editItemFromList = (quantity, id) => {
-      CartService.updateItem(quantity, id).then((response) => {
+    vm.editItemFromList = (newItem) => {
+      CartService.updateItem(newItem).then((response) => {
         vm.cartItemList = response;
         return vm.cartItemList;
       })

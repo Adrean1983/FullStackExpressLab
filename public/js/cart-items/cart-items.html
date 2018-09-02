@@ -11,13 +11,14 @@
     </form>
     <h4>Shopping List</h4>
     <section ng-repeat="item in $ctrl.cartItemList" class="itemcontainers">
-        <!-- <p>ID: {{ item.id }}</p> -->
+        <p>ID: {{ item.id }}</p>
         <p>Product: {{ item.product }}</p>
         <p>Price: {{ item.price | currency }}</p>
-        <p>Quantity: {{ item.quantity }}</p>
+        <p>Quantity<input ng-blur="$ctrl.editItemFromList(item)" ng-model="item.quantity"></p>
+        
         <!-- <button type="button" ng-click="$ctrl.editItemFromList($ctrl.cartItemList[$index].id);">Edit</button> -->
         <p>Total: {{ item.price * item.quantity | currency}} </p>
-        <button ng-click="$ctrl.deleteItemFromList($ctrl.cartItemList[$index].id);">X</button>
+        <button ng-click="$ctrl.deleteItemFromList($ctrl.cartItemList[$index].id);">Delete</button>
         
     </section>
 </section> 

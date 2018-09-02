@@ -1,7 +1,8 @@
 "use strict";
 function CartService($http) {
   const vm = this;
-  vm.getAllItems = () => {
+  vm.cartItemList = [];
+  vm.setAllItems = () => {
     return $http({
       url: "/cart-items",
       method: "GET"
@@ -11,6 +12,9 @@ function CartService($http) {
       return vm.cartItemList;
     });
   };
+  vm.getAllItems = () => {
+    return vm.cartItemList;
+  }
   vm.addItem = (item) => {
       return $http({
         url: "/cart-items",
@@ -31,11 +35,11 @@ function CartService($http) {
     })
   }
 
-  vm.updateItem = (quantity, id) => {
+  vm.updateItem = (newItem) => {
     return $http({
-      url: "/cart-items/" + id,
+      url: "/cart-items/" + newItem.id,
       method: "PUT",
-      data: quantity
+      data: newItem
     }).then((response) => {
       vm.cartItemList = response.data;
       return vm.cartItemList;
